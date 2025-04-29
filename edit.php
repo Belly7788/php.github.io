@@ -2,8 +2,11 @@
 require_once 'connection.php';
 
 $id = $_GET['id'];
+
 $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id AND status = 1");
+
 $stmt->execute(['id' => $id]);
+
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
